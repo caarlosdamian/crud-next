@@ -15,7 +15,8 @@ const getTopics = async () => {
 };
 
 const TopicsList = async () => {
-  const { topics } = await getTopics();
+  const infoData = await getTopics();
+  const { topics } = await infoData ? infoData : { topics: [] };
   return (
     <>
       {topics.map(
