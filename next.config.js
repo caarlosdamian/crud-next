@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': ['GET', 'POST', 'PUT', 'DELETE'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
