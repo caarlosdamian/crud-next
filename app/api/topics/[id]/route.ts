@@ -10,17 +10,7 @@ export async function GET(
   const { id } = params;
   await connectMongoDb();
   const topic = await Topic.findById(id);
-  return NextResponse.json(
-    { topic },
-    {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      },
-    }
-  );
+  return NextResponse.json({ topic }, { status: 200 });
 }
 export async function PUT(
   request: NextRequest,
@@ -34,15 +24,5 @@ export async function PUT(
     { title, description },
     { new: true }
   );
-  return NextResponse.json(
-    { newTopic },
-    {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      },
-    }
-  );
+  return NextResponse.json({ newTopic }, { status: 200 });
 }
