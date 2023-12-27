@@ -1,4 +1,5 @@
 'use client';
+import { BASE_API_URL } from '@/constants';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
@@ -20,7 +21,7 @@ const EditTopicForm = ({
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+      const res = await fetch(`${BASE_API_URL}/api/topics/${id}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',

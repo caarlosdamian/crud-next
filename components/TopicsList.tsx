@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import RemoveBtn from './RemoveBtn';
 import { HiPencilAlt } from 'react-icons/hi';
+import { BASE_API_URL } from '@/constants';
 
 const getTopics = async () => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   try {
-    const rest = await fetch('http://localhost:3000/api/topics', {
+    const rest = await fetch(`${BASE_API_URL}/api/topics`, {
       cache: 'no-store',
     });
     if (!rest.ok) {
@@ -16,10 +20,10 @@ const getTopics = async () => {
 
 const TopicsList = async () => {
   const infoData = await getTopics();
-  const { topics } = await infoData ? infoData : { topics: [] };
+
   return (
     <>
-      {topics.map(
+      {infoData?.topics.map(
         ({
           _id,
           description,

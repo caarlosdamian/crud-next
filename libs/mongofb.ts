@@ -1,4 +1,3 @@
-import console from 'console';
 import mongoose from 'mongoose';
 
 const connectMongoDb = async () => {

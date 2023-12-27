@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { BASE_API_URL } from '@/constants';
 
 const AddTopic = () => {
   const [form, setForm] = useState<{ [key: string]: string }>({});
@@ -12,7 +13,7 @@ const AddTopic = () => {
       alert('Title and description is required');
     }
     try {
-      const res = await fetch('http://localhost:3000/api/topics', {
+      const res = await fetch(`${BASE_API_URL}/api/topics`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
