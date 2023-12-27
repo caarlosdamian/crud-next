@@ -10,7 +10,17 @@ export async function POST(request: NextRequest) {
     description,
   });
 
-  return NextResponse.json({ message: 'Topic Created' }, { status: 201 });
+  return NextResponse.json(
+    { message: 'Topic Created' },
+    {
+      status: 201,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  );
 }
 
 export async function GET() {
@@ -24,5 +34,15 @@ export async function DELETE(request: NextRequest) {
 
   await connectMongoDb;
   await Topic.findByIdAndDelete(id);
-  return NextResponse.json({ message: 'Topic deleted' }, { status: 200 });
+  return NextResponse.json(
+    { message: 'Topic deleted' },
+    {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  );
 }
